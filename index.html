@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FaceDetect – Face &amp; Hand Tracking</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- MediaPipe Face Detection (same CDN as Hands — reliable) -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_detection@0.4.1646425229/face_detection.js"
+        crossorigin="anonymous"></script>
+    <!-- MediaPipe Hands -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1646424915/hands.js"
+        crossorigin="anonymous"></script>
+
+    <script defer src="app.js"></script>
+</head>
+
+<body>
+
+    <!-- ── HEADER ── -->
+    <header>
+        <div class="brand">
+            <div class="brand-dot"></div>
+            <span class="brand-name">FaceDetect</span>
+        </div>
+        <div class="pill" id="statusPill">
+            <span class="pill-dot" id="pillDot"></span>
+            <span id="statusText">Starting up…</span>
+        </div>
+    </header>
+
+    <!-- ── MAIN ── -->
+    <main>
+
+        <section class="intro">
+            <h1>Face &amp; <em>Hand Tracking</em></h1>
+            <p>Your face and hands are detected live — including every individual finger. All processing runs locally in
+                your browser.</p>
+        </section>
+
+        <!-- Camera card -->
+        <div class="camera-card">
+            <div class="video-wrap">
+                <video id="video" autoplay muted playsinline></video>
+                <canvas id="overlay"></canvas>
+                <div class="cam-placeholder" id="placeholder">
+                    <div class="cam-icon">📷</div>
+                    <p>Camera not started yet</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="btn-row">
+            <button class="btn btn-start" id="startBtn">Start Camera</button>
+            <button class="btn btn-stop" id="stopBtn" disabled>Stop</button>
+        </div>
+
+
+
+
+
+    </main>
+
+    <footer>
+        <p>Powered by face-api.js &amp; MediaPipe Hands &nbsp;·&nbsp; All processing is local</p>
+    </footer>
+
+    <!-- ── LOADING SCREEN ── -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-box">
+            <div class="loader-ring"></div>
+            <p class="load-title">Loading AI models</p>
+            <p class="load-sub" id="loadSub">Please wait…</p>
+            <div class="load-bar-track">
+                <div class="load-bar-fill" id="loadBar"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
